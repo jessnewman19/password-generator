@@ -20,9 +20,11 @@ function PasswordStrengthMeter({password}) {
     }
     
   return (
-    <div>
+    <div id='password-strength-div'>
         <progress value={testPassword.score} max='4'></progress>
-        <label>{createPasswordLabel(testPassword)}</label>
+        <div id='password-strength-label'> 
+            <strong>Password strength: </strong><label>{createPasswordLabel(testPassword)}</label>
+        </div>
     </div>
   )
 }

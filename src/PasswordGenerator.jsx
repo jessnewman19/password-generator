@@ -122,26 +122,45 @@ const PasswordGenerator = () => {
 
 
   return (
-    <div>
-      <h1>Password Generator</h1>
-      {password ? <input id='password' name='password' type={hidePassword ? "password" : "text"} value={password} readOnly onClick={() => copyToClipboard()} /> : <span>Please Generate a Password</span>}
-      <button type="button" onClick={() => copyToClipboard()}>Copy to Clipboard</button>
+    <div id='password-generator'>
+
+      {password ? <input className='password' name='password' type={hidePassword ? "password" : "text"} value={password} readOnly onClick={() => copyToClipboard()} /> : <span className='password'>Please Generate a Password</span>}
+
+      <div className='button-div'> 
+        <button className='button' type="button" onClick={() => copyToClipboard()}>Copy to Clipboard</button>
+      </div>
+
       <form onSubmit={(e) => makePassword(e)}>
-        <label htmlFor="password-length">Choose a password length:</label>
-        <input id="password-length" name="password-length" type="number" step="1" value={passwordLength} onChange={(e) => setPasswordLength(e.target.value)} />
+      <div id='inputs'> 
+        <div className='label-input-divs'>
+          <label htmlFor="password-length" id='password-length-label'>Password Length</label>
+          <input id="password-length-input" name="password-length-input" type="number" step="1" value={passwordLength} onChange={(e) => setPasswordLength(e.target.value)} />
+        </div>
 
-        <label htmlFor="lowercase">Include Lowercase</label>
-        <input id="lowercase" name="lowercase" type="checkbox" defaultChecked onClick={() => setIncludeLowercase((prev) => !prev)} />
+        <div className='label-input-divs'>
+          <label htmlFor="lowercase">Include Lowercase</label>
+          <input id="lowercase" name="lowercase" type="checkbox" defaultChecked onClick={() => setIncludeLowercase((prev) => !prev)} />
+        </div>
 
-        <label htmlFor="uppercase">Include Uppercase</label>
-        <input id="uppercase" name="uppercase" type="checkbox" defaultChecked onClick={() => setIncludeUppercase((prev) => !prev)}/>
+        <div className='label-input-divs'> 
+          <label htmlFor="uppercase">Include Uppercase</label>
+          <input id="uppercase" name="uppercase" type="checkbox" defaultChecked onClick={() => setIncludeUppercase((prev) => !prev)}/>
+        </div>
 
-        <label htmlFor="numbers">Include Numbers</label>
-        <input id="numbers" name="numbers" type="checkbox" defaultChecked onClick={() => setIncludeNumbers((prev) => !prev)}/>
+        <div className='label-input-divs'> 
+          <label htmlFor="numbers">Include Numbers</label>
+          <input id="numbers" name="numbers" type="checkbox" defaultChecked onClick={() => setIncludeNumbers((prev) => !prev)}/> 
+        </div>
 
-        <label htmlFor="symbols">Include Symbols</label>
-        <input id="symbols" name="symbols" type="checkbox" defaultChecked onClick={() => setIncludeSymbols((prev) => !prev)}/>
-        <button type="submit" disabled={!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols} >Generate Password</button>       
+        <div className='label-input-divs'> 
+          <label htmlFor="symbols">Include Symbols</label>
+          <input id="symbols" name="symbols" type="checkbox" defaultChecked onClick={() => setIncludeSymbols((prev) => !prev)}/>
+        </div>
+      </div>
+      <div className='button-div'> 
+        <button className='button' type="submit" disabled={!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols} >Generate Password</button>    
+      </div>   
+
       </form>
 
       <PasswordStrengthMeter password={password}/>

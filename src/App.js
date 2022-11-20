@@ -3,7 +3,8 @@ import PasswordGenerator from './PasswordGenerator';
 
 function App() {
   return (
-    <div>
+    <div id='password-generator-app'>
+      <h1>Password Generator</h1>
       <PasswordGenerator />
     </div>
   );
