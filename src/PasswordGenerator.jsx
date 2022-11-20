@@ -112,7 +112,6 @@ const PasswordGenerator = () => {
   return (
     <div>
       <h1>Password Generator</h1>
-      <p>stuff</p>
       {password ? <span>{password}</span> : <span>Please Generate a Password</span>}
       <form onSubmit={(e) => makePassword(e)}>
         <label htmlFor="password-length">Choose a password length:</label>
@@ -129,7 +128,7 @@ const PasswordGenerator = () => {
 
         <label for="symbols">Include Symbols</label>
         <input id="symbols" name="symbols" type="checkbox" defaultChecked onClick={() => setIncludeSymbols((prev) => !prev)}/>
-        <button type="submit">Generate Password</button>
+        {includeLowercase === false && includeUppercase === false && includeNumbers === false && includeSymbols === false ? <button type="submit" disabled >Generate Password</button>: <button type="submit">Generate Password</button>}
       </form>
     </div>
   )
