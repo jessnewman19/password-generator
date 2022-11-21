@@ -17,7 +17,10 @@ const PasswordGenerator = () => {
 
   useEffect(() => {
     setHidePassword(false);
-    setTimeout(() => setHidePassword(true), 5000);
+    let timer = setTimeout(() => setHidePassword(true), 5000);
+    return () => { 
+      clearTimeout(timer)
+    }
   }, [password]);
 
   const makePassword = (e) => {
@@ -28,6 +31,7 @@ const PasswordGenerator = () => {
       upper = 0,
       num = 0,
       sym = 0;
+
     if (includeLowercase) {
       lower = Math.ceil(passwordLength / 10);
     }
@@ -164,6 +168,7 @@ const PasswordGenerator = () => {
               name="password-length-input"
               type="number"
               step="1"
+              min = '5'
               value={passwordLength}
               onChange={(e) => setPasswordLength(e.target.value)}
             />
