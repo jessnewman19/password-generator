@@ -103,7 +103,12 @@ const PasswordGenerator = () => {
   };
 
   const getAnyCharacter = () => {
-    const allChars = lowercaseAlphabet + uppercaseAlphabet + numbers + symbols;
+    const lowerChars = includeLowercase ? lowercaseAlphabet : "";
+    const upperChars = includeUppercase ? uppercaseAlphabet : "";
+    const numChars = includeNumbers ? numbers : "";
+    const symChars = includeSymbols ? symbols : "";
+
+    const allChars = lowerChars + upperChars + numChars + symChars;
     const idx = Math.floor(Math.random() * allChars.length);
     const char = allChars.charAt(idx);
     return char;
